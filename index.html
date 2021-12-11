@@ -12,23 +12,31 @@
     </nav>
     <main>
         <h2>Vacation Contest Sign-Up Form</h2>
-        <form> <!-- TODO: Set Action and Method Properties -->
+        <form method="GET" action="results.html">
             <div>
-                <label for="firstname">Your First Name</label>
-                <input type="text" id="firstname" name="firstname">
-                <label for="lastname">Your Last  Name</label>
-                <input type="text" id="lastname" name="lastname">
+                <label for="firstname">Your First Name</label><span class="required-field">*</span>
+                <input type="text" id="firstname" name="firstname" minlength="2" maxlength="35" required/>
+                <label for="lastname">Your Last  Name</label><span class="required-field">*</span>
+                <input type="text" id="lastname" name="lastname" minlength="2" maxlength="35" required/>
+                <label for="age">Your Age</label>
+                <input type="number" name="age" id="age" min="21" max="110">
+                <label>Your Secret Code (must be 6 alphanumeric characters)</label><span class="required-field">*</span>
+                <input type="password" title="6 Alphanumeric Character Passcode" pattern="[0-9a-zA-Z]{6}" required>
+                <h5>
+                    Must be 21 or older to enter contest.
+                </h5>
             </div>
             <fieldset>
                 <legend>Your Contact Info</legend>
-                <label for="email">Your Email</label>
-                <input type="text" id="email" name="email">
+                <label for="email">Your Email</label><span class="required-field">*</span>
+                <input type="text" id="email" name="email" required/>
                 <label for="location">Your Street Address</label>
                 <input type="text" name="address">
                 <label for="location">Your City</label>
                 <input type="text" name="city">
                 <label for="location">Your State</label>
-                <select name="state"> 
+                <input name="state" list="state-list">
+                <datalist name="state" id="state-list"> 
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -78,9 +86,9 @@
                     <option value="WI">Wisconsin</option>
                     <option value="WV">West Virginia</option>
                     <option value="WY">Wyoming</option>
-                </select>
+                </datalist>
                 <label for="location">Your Zipcode</label>
-                <input type="text" name="zip">
+                <input type="text" name="zip" id="zip" pattern="[0-9]{5}" title="5-Digit US ZIP Code">
             </fieldset>
             <fieldset>
                 <legend>Your Preferences</legend>
@@ -96,11 +104,21 @@
                     <label for="new-zealand">New Zealand</label>
                 </div>
             </fieldset>
-            <!-- TODO: Radio buttons for selecting preferred destination -->
-            <!-- TODO: Color input for selecting favorite color -->
-            <!-- TODO: Checkboxes for selecting extra add-ons -->
-            
-            <!-- TODO: Submit Button -->
+            <label>Color Picker</label>
+            <input type="color" name="color">
+            <fieldset>
+                <legend>Add-ons and Extras</legend>
+                <h3>Choose your add-ons and extras!</h3>
+                <div>
+                    <input type="radio" id="sauna" name="extras" value="sauna">
+                    <label for="sauna">Sauna</label>
+                    <input type="radio" id="pool" name="extras" value="pool">
+                    <label for="pool">Pool</label>
+                    <input type="radio" id="hot-tub" name="extras" value="hot-tub">
+                    <label for="hot-tub">Hot-Tub</label>
+                </div>
+            </fieldset>
+            <input type="submit" value="Enter the Contest">
         </form>
     </main>
     <footer>
